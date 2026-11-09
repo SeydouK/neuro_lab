@@ -1,0 +1,400 @@
+Oui \! Et je te propose la même approche que ton exemple : un projet fil rouge que tu vas répéter plusieurs fois, avec une difficulté progressive.
+
+Mais cette fois, je vais construire le parcours à partir de ce que tu as réellement appris la semaine dernière.
+
+Tu as déjà abordé plusieurs notions intéressantes :
+
+- Manipulation et tri de dictionnaires.
+- `defaultdict` et `Counter`.
+- Exécution de commandes système avec `subprocess`.
+- Manipulation des dates et timestamps.
+- Arguments CLI avec `argparse`.
+- Gestion des fichiers et dossiers avec `pathlib`.
+- Déplacement de fichiers avec `shutil`.
+- Type hints et `Optional`.
+- Tuples et dictionnaires typés.
+- Classes avec `dataclass`.
+- `field(default_factory=...)`.
+- Tests automatisés avec `pytest`.
+- Tests paramétrés et `tmp_path`.
+- Gestion des erreurs avec `try/except`.
+
+Je te propose donc un parcours de 8 semaines.
+
+# Projet fil rouge : Python Developer Toolkit
+
+Implementing Privacy- Privacy Checkpoint in CI Pipeline
+
+rename-dirs · PyPI
+
+Python Project Structure Best Practices: How Pros Build Clean, Scalable Codebases | by Azeem Teli | PyZilla | Python | Medium
+
+L'idée : construire progressivement un outil en ligne de commande capable d'analyser un dossier, organiser ses fichiers, suivre les modifications Git et produire des statistiques.
+
+C'est un projet intéressant parce qu'il te permettra de réutiliser presque toutes les commandes que tu viens d'apprendre.
+
+# 1. Ce que tu vas réviser
+
+| Notion | Commandes et concepts |
+| --- | --- |
+| Dictionnaires | `dict.items()`, `get()`, `sorted()` |
+| Comptage | `defaultdict`, `Counter` |
+| Terminal | `subprocess.run()` |
+| Erreurs | `try`, `except`, `CalledProcessError` |
+| Dates | `datetime`, `timezone`, `fromtimestamp()` |
+| CLI | `argparse`, `store_true` |
+| Fichiers | `Path`, `mkdir()`, `touch()` |
+| Lecture/écriture | `read_text()`, `write_text()` |
+| Déplacement | `shutil.move()`, `rename()` |
+| Typage | `str`, `int`, `Optional`, `tuple`, `dict` |
+| Classes | `dataclass`, `field`, `asdict()` |
+| Tests | `pytest`, `parametrize`, `tmp_path` |
+
+# 2. Ton programme sur 8 semaines
+
+## Semaine 1 — File Explorer CLI
+
+DébutantWindows-Terminal: Tab-Farbe ändern – schnell färben - COMPUTER BILD
+
+[computerbild.de](<https://www.computerbild.de/artikel/cb-Tipps-Software-Windows-Terminal-Tab-Farbe-aendern-wenige-Klicks-genuegen-37087585.html?utm_source=chatgpt.com>)
+
+Construis un programme qui analyse un dossier et affiche son contenu.
+
+Fonctionnalités :
+
+1. Demander le chemin d'un dossier.
+2. Vérifier que le dossier existe.
+3. Afficher tous les fichiers.
+4. Afficher le nom, l'extension et le chemin de chaque fichier.
+5. Compter le nombre de fichiers par extension.
+6. Créer un dossier si nécessaire.
+7. Créer un fichier texte et écrire du contenu dedans.
+
+Notions à utiliser :
+
+- `Path`
+- `mkdir()`
+- `iterdir()`
+- `is_file()`
+- `exists()`
+- `suffix`
+- `stem`
+- `name`
+- `touch()`
+- `read_text()`
+- `write_text()`
+- `defaultdict`
+- `Counter`
+
+Bonus : afficher les cinq extensions les plus fréquentes.
+
+## Semaine 2 — File Organizer
+
+Débutant🧹 Part 3 — Auto-Clean Your Downloads Folder with Python | by ghostyjoe | Bug Bounty Hunting: A Comprehensive Guide in English and french | Feb, 2026 | Medium
+
+[medium.com](<https://medium.com/bug-bounty-hunting-a-comprehensive-guide-in/part-3-auto-clean-your-downloads-folder-with-python-99aa9b7a590c?utm_source=chatgpt.com>)
+
+Construis un outil qui organise automatiquement les fichiers d'un dossier.
+
+Fonctionnalités :
+
+1. Identifier les fichiers selon leur extension.
+2. Créer des dossiers `images`, `documents`, `code`, `others`.
+3. Déplacer les fichiers dans les dossiers correspondants.
+4. Vérifier que le fichier existe avant de le déplacer.
+5. Afficher un résumé des déplacements.
+6. Éviter d'écraser un fichier existant.
+
+Notions à utiliser :
+
+- `Path`
+- `suffix`
+- `is_file()`
+- `mkdir()`
+- `shutil.move()`
+- `rename()`
+- `defaultdict`
+- `Counter`
+
+Bonus : ajouter un mode `--dry-run` qui affiche les déplacements sans les effectuer.
+
+## Semaine 3 — Git Repository Analyzer
+
+IntermédiaireWays to Show Git Logs in better way using pretty formatting | Code2care
+
+[code2care.org](<https://code2care.org/git/ways-to-show-git-log-in-better-way-pretty-formatting/?utm_source=chatgpt.com>)
+
+Construis un programme qui analyse l'historique d'un dépôt Git.
+
+Fonctionnalités :
+
+1. Récupérer tous les commits.
+2. Afficher les auteurs.
+3. Compter le nombre de commits par auteur.
+4. Afficher les dates des commits.
+5. Identifier le jour où il y a eu le plus de commits.
+6. Afficher les dix derniers commits.
+7. Gérer les erreurs si le dossier n'est pas un dépôt Git.
+
+Notions à utiliser :
+
+- `subprocess.run()`
+- `capture_output=True`
+- `text=True`
+- `cwd`
+- `returncode`
+- `check=True`
+- `CalledProcessError`
+- `stdout`
+- `stderr`
+- `Counter`
+- `defaultdict`
+- `datetime`
+- `timezone`
+- `fromtimestamp()`
+
+Bonus : identifier l'auteur le plus actif.
+
+## Semaine 4 — Task Manager CLI
+
+IntermédiaireTaskline: manage your tasks with style
+
+[medevel.com](<https://medevel.com/taskline/?utm_source=chatgpt.com>)
+
+Construis un gestionnaire de tâches dans le terminal.
+
+Chaque tâche doit contenir :
+
+- Un identifiant.
+- Un nom.
+- Une description.
+- Une date de création.
+- Un statut (`pending` ou `completed`).
+
+Fonctionnalités :
+
+1. Ajouter une tâche.
+2. Afficher toutes les tâches.
+3. Marquer une tâche comme terminée.
+4. Supprimer une tâche.
+5. Compter les tâches par statut.
+6. Afficher les tâches les plus anciennes.
+
+Notions à utiliser :
+
+- `dataclass`
+- `field(default_factory=...)`
+- `asdict()`
+- `datetime`
+- `dict`
+- `Optional`
+- `list`
+- `argparse`
+
+Bonus : sauvegarder les tâches dans un fichier JSON (tu devras apprendre `json`).
+
+## Semaine 5 — Python CLI Professional Tool
+
+Intermédiaire +Python argparse: unrecognized arguments error \[Solved\] | bobbyhadz
+
+[bobbyhadz.com](<https://bobbyhadz.com/blog/python-argparse-error-unrecognized-arguments?utm_source=chatgpt.com>)
+
+Maintenant, tu vas transformer tes petits programmes en une véritable application CLI.
+
+Fonctionnalités :
+
+1. Créer une commande `scan`.
+2. Créer une commande `organize`.
+3. Créer une commande `git-stats`.
+4. Créer une commande `tasks`.
+5. Ajouter des arguments obligatoires et optionnels.
+6. Ajouter un mode `--dry-run`.
+7. Afficher des messages d'erreur propres.
+
+Notions :
+
+- `argparse`
+- `ArgumentParser`
+- `add_argument()`
+- `store_true`
+- `parse_args()`
+- `subprocess`
+- `try/except`
+- Type hints
+- Fonctions avec paramètres par défaut.
+
+Bonus : créer des sous-commandes avec `add_subparsers()` (nouvelle notion).
+
+## Semaine 6 — Dataclass & Architecture
+
+Intermédiaire +Python Trick: Using dataclasses with field(default\_factory=...) - DEV Community
+
+[dev.to](<https://dev.to/devasservice/python-trick-using-dataclasses-with-fielddefaultfactory-4159?utm_source=chatgpt.com>)
+
+Tu vas améliorer l'architecture de ton application.
+
+Fonctionnalités :
+
+1. Créer une classe `FileInfo`.
+2. Créer une classe `RepositoryInfo`.
+3. Créer une classe `Task`.
+4. Créer une classe `Project`.
+5. Ajouter des méthodes pour transformer les objets en dictionnaires.
+6. Empêcher certaines modifications sur des objets avec `frozen=True`.
+
+Notions :
+
+- `@dataclass`
+- `field()`
+- `default_factory`
+- `frozen=True`
+- `asdict()`
+- `Optional`
+- `tuple`
+- Type hints
+
+Bonus : apprendre `__post_init__()` pour valider les données à la création d'un objet.
+
+## Semaine 7 — Automated Testing
+
+AvancéTesting Python Applications with Pytest
+
+[stribny.name](<https://stribny.name/posts/pytest/?utm_source=chatgpt.com>)
+
+Tu vas écrire des tests pour toutes les fonctionnalités développées.
+
+Fonctionnalités :
+
+1. Tester le comptage des extensions.
+2. Tester le déplacement des fichiers.
+3. Tester la création des dossiers.
+4. Tester la conversion d'une dataclass en dictionnaire.
+5. Tester les erreurs.
+6. Tester les arguments des fonctions.
+
+Notions :
+
+- `pytest`
+- `assert`
+- `pytest.mark.parametrize`
+- `tmp_path`
+- Fixtures
+- Tests de fonctions
+- Tests de fichiers
+
+Bonus : viser une couverture de tests de 80 % avec `pytest-cov` (nouvelle notion).
+
+## Semaine 8 — Final Project
+
+Projet finalGit-Scope | Control Your Git Universe
+
+[bharath-code.github.io](<https://bharath-code.github.io/git-scope/?utm_source=chatgpt.com>)
+
+Tu vas réunir toutes les fonctionnalités dans un seul outil.
+
+Nom : `DevToolkit`
+
+Ton application devra permettre de :
+
+- Scanner un dossier.
+- Analyser les extensions.
+- Organiser automatiquement les fichiers.
+- Analyser un dépôt Git.
+- Afficher les statistiques des contributeurs.
+- Gérer une liste de tâches.
+- Exporter des rapports.
+- Exécuter des commandes depuis le terminal.
+- Gérer les erreurs.
+- Tester automatiquement les fonctionnalités.
+
+À la fin, tu auras un véritable projet Python que tu pourras mettre sur GitHub.
+
+# 3. Ton système de répétition
+
+Je te conseille de ne pas simplement passer à la semaine suivante après avoir terminé un projet.
+
+Utilise plutôt cette méthode :
+
+| Répétition | Objectif |
+| --- | --- |
+| 1ère fois | Construire avec tes notes |
+| 2ème fois | Reconstruire sans regarder |
+| 3ème fois | Ajouter une fonctionnalité |
+| 4ème fois | Refactoriser ton code |
+| 5ème fois | Écrire les tests sans aide |
+
+C'est cette répétition qui va transformer tes connaissances en réflexes.
+
+# 4. Ton tableau de progression
+
+Mon parcours Python
+
+0 %
+
+# 0/8
+
+[ ]
+
+Semaine 1 — File Explorer CLI
+
+Path, pathlib, defaultdict, Counter
+
+[ ]
+
+Semaine 2 — File Organizer
+
+shutil, déplacement et extensions
+
+[ ]
+
+Semaine 3 — Git Repository Analyzer
+
+subprocess, datetime, timezone
+
+[ ]
+
+Semaine 4 — Task Manager CLI
+
+dataclass, argparse, Optional
+
+[ ]
+
+Semaine 5 — Professional CLI
+
+argparse, erreurs, architecture
+
+[ ]
+
+Semaine 6 — Dataclass & Architecture
+
+frozen, asdict, typage
+
+[ ]
+
+Semaine 7 — Automated Testing
+
+pytest, parametrize, tmp\_path
+
+[ ]
+
+Semaine 8 — DevToolkit Final Project
+
+Combiner toutes les notions
+
+ Réinitialiser la progression
+
+# 5\. Ton premier défi : File Explorer CLI
+
+Je veux que tu commences par la semaine 1.
+
+Voici les règles :
+
+1. Tu dois écrire le programme toi-même.
+2. Tu n'as pas le droit de copier un ancien code.
+3. Tu peux consulter la documentation Python.
+4. Tu dois essayer d'utiliser toutes les notions demandées.
+5. Tu m'envoies ton code pour correction.
+
+Un dernier conseil : ne cherche pas à apprendre 20 nouvelles commandes chaque semaine. Essaie plutôt de maîtriser les commandes que tu connais déjà, puis ajoute deux ou trois nouvelles notions à chaque projet.
+
+Mon objectif est que dans quelques semaines, lorsque je te demanderai de créer un outil qui analyse des fichiers, tu saches spontanément utiliser `Path`, `Counter`, `dataclass`, `subprocess` et `pytest` sans avoir besoin de chercher tes anciennes notes.

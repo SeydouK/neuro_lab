@@ -1,0 +1,133 @@
+Oui \! Et je te propose quelque chose de beaucoup plus intéressant que de simples exercices indépendants : un projet fil rouge que tu reprendras chaque semaine, en repartant de zéro ou en améliorant ton ancien code.
+
+L'objectif est de transformer ce que tu as appris en réflexes de programmation.
+
+# Projet fil rouge : Pokémon API Manager
+
+Pokémon Pokédex | react-pokedex
+
+GitHub - phsarah/pokecute: Front-end project with PokeAPI integration. · GitHub
+
+Browse thousands of Pokemon Background images for design inspiration | Dribbble
+
+Tu vas construire une petite application Python qui communique avec plusieurs API HTTP et expose ses propres endpoints avec FastAPI.
+
+Chaque semaine, tu reprends le même projet, mais avec un nouveau défi.
+
+## 1. Ce que tu vas réviser
+
+| Notion | Ce que tu as appris |
+| --- | --- |
+| GET | Récupérer des données d'une API |
+| POST | Envoyer des données |
+| PUT | Modifier des données |
+| DELETE | Supprimer des données |
+| Params | Filtrer les résultats |
+| Headers | Envoyer des informations au serveur |
+| JSON | Lire et manipuler les réponses |
+| Status codes | Gérer les erreurs HTTP |
+| Timeout | Éviter les requêtes interminables |
+| HTTPX | Communiquer avec des API |
+| Requests | Faire des requêtes HTTP |
+| FastAPI | Créer ta propre API |
+| Pydantic | Valider les données entrantes |
+| HTTPException | Gérer les erreurs de ton API |
+
+# 2. Ton programme sur 8 semaines
+
+1. Semaine 1 — Pokédex CLI
+   Construire un programme qui recherche un Pokémon, affiche ses statistiques, ses capacités et son poids.
+   Notions : GET, JSON, paramètres d'URL, exceptions, timeout.
+2. Semaine 2 — Gestion des utilisateurs
+   Utiliser JSONPlaceholder pour rechercher un utilisateur, afficher ses informations et ses publications.
+   Notions : GET, routes dynamiques, params, status codes, boucles.
+3. Semaine 3 — Recherche avancée
+   Créer un moteur de recherche de Pokémon avec filtres et pagination.
+   Notions : query parameters, headers, JSON, traitement des données.
+4. Semaine 4 — Création de données
+   Créer un système permettant d'enregistrer des Pokémon favoris.
+   Notions : POST, PUT, DELETE, payload JSON, codes HTTP.
+5. Semaine 5 — Client HTTP professionnel
+   Construire un client qui communique avec plusieurs API et gère les erreurs réseau.
+   Notions : HTTPX, Requests, headers, timeout, exceptions.
+6. Semaine 6 — Ton API FastAPI
+   Créer une API qui permet de gérer une collection de Pokémon favoris.
+   Notions : GET, POST, PUT, DELETE, Pydantic, HTTPException.
+7. Semaine 7 — API complète
+   Ajouter la recherche, les filtres, la pagination et la validation des données.
+   Notions : query parameters, path parameters, validation, status codes.
+8. Semaine 8 — Projet final
+   Construire un Pokédex complet avec un client HTTPX qui communique avec ton API FastAPI, elle-même connectée à PokeAPI.
+
+# 3. Ton premier exercice à faire cette semaine
+
+Semaine 1 · Niveau débutant/intermédiaire## Mission : construire ton Pokédex interactif
+
+Developing a turn based real-time battle game with Next.js and WebSockets | Jay Gould
+
+[jaygould.co.uk](<https://jaygould.co.uk/2022-03-31-developing-turn-based-real-time-battle-game-next-js-websockets/?utm_source=chatgpt.com>)
+
+Tu dois créer un programme Python qui permet à un utilisateur de rechercher plusieurs Pokémon.
+
+Fonctionnalités obligatoires :
+
+1. Demander le nom d'un Pokémon à l'utilisateur.
+2. Faire une requête GET vers PokeAPI.
+3. Utiliser `timeout=10`.
+4. Vérifier le statut HTTP avec `raise_for_status()`.
+5. Récupérer les données JSON.
+6. Afficher :
+   - Son nom.
+   - Son poids.
+   - Sa taille.
+   - Ses capacités.
+   - Ses types.
+7. Gérer les erreurs si le Pokémon n'existe pas.
+8. Permettre à l'utilisateur de rechercher un autre Pokémon sans relancer le programme.
+
+Bonus :
+
+- Afficher les statistiques de base du Pokémon.
+- Afficher son numéro de Pokédex.
+- Ajouter une option pour quitter le programme.
+- Gérer les erreurs de connexion (`httpx.RequestError`).
+
+## 4. Les règles du jeu
+
+Je te propose une méthode pour progresser :
+
+- Tu écris ton code sans regarder de correction.
+- Tu peux consulter la documentation de HTTPX et PokeAPI.
+- Tu m'envoies ton code quand tu as terminé.
+- Je fais une correction comme un professeur : erreurs, bonnes pratiques, explications et pistes d'amélioration.
+- Je te donne ensuite un petit défi supplémentaire.
+
+Important : je ne veux pas que tu recopies simplement mes solutions. Le but est que tu saches expliquer pourquoi tu utilises `GET`, `POST`, `raise_for_status()`, `params`, `headers`, etc.
+
+## 5. Ton suivi de progression
+
+Mon parcours HTTP
+
+# 0%
+
+0 exercices terminés sur 8
+
+[ ]Semaine 1 : Pokédex CLI
+
+[ ]Semaine 2 : Gestion des utilisateurs
+
+[ ]Semaine 3 : Recherche avancée
+
+[ ]Semaine 4 : Création de données
+
+[ ]Semaine 5 : Client HTTP professionnel
+
+[ ]Semaine 6 : API FastAPI
+
+[ ]Semaine 7 : API complète
+
+[ ]Semaine 8 : Projet final
+
+Mon conseil : consacre environ 2 à 4 heures par semaine à ce projet. À la fin des 8 semaines, tu auras construit quelque chose de concret et surtout compris comment un client et un serveur communiquent en HTTP.
+
+Pour commencer : fais uniquement la semaine 1 et envoie-moi ton code. Je te corrigerai sans te donner directement la solution.
