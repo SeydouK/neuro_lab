@@ -42,6 +42,7 @@ while True:
                 print("Erreur : Pokémon introuvable !")
             else:
                 print(f"Erreur HTTP : {e.response.status_code}")
+                print(e.response.json())
             continue
 
         except httpx.RequestError as e:
