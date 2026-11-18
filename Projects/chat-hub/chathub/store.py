@@ -1,9 +1,8 @@
 """Stockage des messages : logique PURE, sans FastAPI ni print (Leçon 2 : séparer logique et I/O)."""
 
-import datetime
-from inspect import indentsize
 from pathlib import Path
-from sqlite3.dbapi2 import Timestamp
+
+from typing import Optional
 
 from chathub.models import ChatMessage
 
@@ -14,7 +13,7 @@ import json
 class MessageStore:
     """Garde les messages en mémoire, et dans un fichier JSON si un chemin est donné."""
 
-    def __init__(self, path: Path | None = None) -> None:
+    def __init__(self, path: Optional[Path] = None) -> None:
         """Prépare le stockage.
 
         - self.path = path
@@ -25,7 +24,7 @@ class MessageStore:
         self.messages = []
         self.next_id = 1
         if self.path is not None :
-            self.path = path.resolve()
+            self.path = self.path.resolve()
             if path.exists() and path.is_file():
                 self._load()
 
@@ -45,17 +44,15 @@ class MessageStore:
                     return i
         raise KeyError("Ce message n'existe pas.")
 
-    def list_messages(self, limit: int | None = None) -> list[ChatMessage]:
+    def list_messages(self, limit: Optional[int]= None) -> list[ChatMessage]:
         """Sans limit : tous les messages, dans l'ordre.
         Avec limit : seulement les `limit` DERNIERS messages. limit=0 -> liste vide.
         (Attention : liste[-0:] renvoie tout !)"""
-        if limit != None: 
-            if len(self.messages) > 0 and limit > 0:
-                return self.messages[-limit:]
-            else:
-                return []
-        else:
+        if limit is None: 
             return self.messages
+        if limit <= 0:
+            return []
+        return self.messages[-limit:]
                 
 
     def delete(self, msg_id: int) -> None:
@@ -72,15 +69,14 @@ class MessageStore:
         """Si self.path est None : ne fait rien (aucun fichier créé).
         Sinon écrit un JSON : {"next_id": ..., "messages": [ {author, text, id, created_at}, ... ]}
         Indices : dataclasses.asdict, json.dumps(..., indent=2), Path.write_text."""
-        if self.path != None: 
-            if self.path == None:
+        if self.path is None: 
                 return 
 
-            data = {
+        data = {
                 'next_id': self.next_id, 
-                'messages': [asdict[message] for message in self.messages]
+                'messages': [asdict(message) for message in self.messages]
             }
-            self.path.write_text(json.dumps(data, indent=2))
+        self.path.write_text(json.dumps(data, indent=2))
 
 
     def _load(self) -> None:
