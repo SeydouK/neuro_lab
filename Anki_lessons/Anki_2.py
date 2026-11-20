@@ -12,10 +12,10 @@ while True:
         print(data['name'], data['weight'], data['abilities'])
         break
     except httpx.HTTPStatusError as e:
-        print("Erreur : e")
+        print(f"Erreur : {e}")
     
 
-
+e
 # Exercice 2 
 users = httpx.get("https://jsonplaceholder.typicode.com/users", timeout=10)
 while True: 

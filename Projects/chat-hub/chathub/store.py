@@ -1,13 +1,11 @@
 """Stockage des messages : logique PURE, sans FastAPI ni print (Leçon 2 : séparer logique et I/O)."""
 
 from pathlib import Path
-
 from typing import Optional
 
+from fastapi import HTTPException
 from chathub.models import ChatMessage
-
 from dataclasses import asdict
-
 import json
 
 class MessageStore:
@@ -21,11 +19,11 @@ class MessageStore:
         - si path existe déjà sur le disque, recharge son contenu (voir _load)
         """
         self.path = path
-        self.messages = []
+        self.messages: list[ChatMessage] = []
         self.next_id = 1
         if self.path is not None :
             self.path = self.path.resolve()
-            if path.exists() and path.is_file():
+            if self.path.exists() and self.path.is_file():
                 self._load()
 
 
@@ -39,10 +37,12 @@ class MessageStore:
 
     def get(self, msg_id: int) -> ChatMessage:
         """Retourne le message ayant cet id. Lève KeyError s'il n'existe pas."""
-        for i in self.messages: 
-                if i.id == msg_id:
-                    return i
-        raise KeyError("Ce message n'existe pas.")
+        try:
+            for i in self.messages: 
+                    if i.id == msg_id:
+                        return i
+        except KeyError as e:
+            raise HTTPException(status_code = 404, detail="Ce message n'existe pas.")
 
     def list_messages(self, limit: Optional[int]= None) -> list[ChatMessage]:
         """Sans limit : tous les messages, dans l'ordre.
@@ -82,10 +82,12 @@ class MessageStore:
     def _load(self) -> None:
         """Relit le fichier JSON écrit par _save et remplit la liste de messages et le compteur.
         Indices : Path.read_text, json.loads, ChatMessage(**dictionnaire)."""
-        data = json.loads(self.path.read_text())
-        self.next_id = data['next_id']
-        self.messages = [
-            ChatMessage(**message)
-            for message in data['messages']
-        ]
+        if self.path is not None:
+            if self.path.exists() and self.path.is_file():
+                data = json.loads(self.path.read_text())
+                self.next_id = data['next_id']
+                self.messages = [
+                    ChatMessage(**message)
+                    for message in data['messages']
+                ]
 

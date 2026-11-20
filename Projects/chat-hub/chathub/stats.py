@@ -1,6 +1,6 @@
 """Statistiques sur les messages : fonctions pures (ancien exercice wordcount, Leçon 1)."""
 
-from .models import ChatMessage
+from chathub.models import ChatMessage
 import re 
 from collections import Counter
 
