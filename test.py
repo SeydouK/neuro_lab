@@ -1,17 +1,9 @@
-response = [
-    {
-        "id": 1,
-        "Message": "text"
-    },
-    {
-        "id": 13,
-        "Message": "text"
-    },
-    {
-        "id": 41,
-        "Message": "text"
-    }
-]
+import httpx 
 
-for i in response:
-    print(i['id'], i['Message'])
+r = httpx.get("https://pokeapi.co/api/v2/pokemon/?offset=0&limit=100", timeout=10)
+
+for result in r.json()['results']:
+    print(result['name'])
+    print(" ")
+print(r)
+print(r.json().items())
